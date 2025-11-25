@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Nectar Wine Merchant',
     images: [
       {
-        url: '/favicon.png',
+        url: '/og-image.png',            // ← ICI, ton image 1200x630
         width: 1200,
         height: 630,
         alt: 'Selection of fine wines by Nectar Wine Merchant',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nectar Wine Merchant',
     description: 'Fine wine merchant based in Bordeaux, sourcing exceptional wines worldwide.',
-    images: ['/favicon.png'],
+    images: ['/og-image.png'],          // ← idem ici
   },
 };
 
