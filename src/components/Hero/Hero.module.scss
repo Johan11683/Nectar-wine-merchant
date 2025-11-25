@@ -1,0 +1,158 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 80px; // sous le header fixe
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  isolation: isolate;
+}
+
+/* IMAGE PRINCIPALE */
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.image {
+  object-fit: cover;
+  object-position: 50% 45%;
+  z-index: -4;
+}
+
+/* Overlays luxe, superposés */
+.darkOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba($color-black, 0.80),
+    rgba($color-black, 0.70),
+    rgba($color-black, 0.65)
+  );
+  z-index: -3;
+}
+
+.bordeauxOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 20%,
+    rgba($color-bordeaux, 0.35),
+    transparent 70%
+  );
+  mix-blend-mode: soft-light;
+  z-index: -2;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.85) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  pointer-events: none;
+  background-image:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.18) 1px, transparent 1px);
+  background-size: 100% 2px, 2px 100%;
+  mix-blend-mode: soft-light;
+  z-index: -1;
+}
+
+/* CONTENU TEXTE */
+
+.heroLogoWrapper {
+  margin: 0 auto 2rem;
+  width: 80px;
+  height: 80px;
+  position: relative;
+}
+
+.heroLogo {
+  object-fit: contain;
+}
+
+
+.content {
+  position: relative;
+  z-index: 10;
+  @include container;
+  text-align: center;
+  max-width: 900px;
+}
+
+.logoSquare {
+  width: 52px;
+  height: 52px;
+  background: $color-white;
+  border-radius: 4px;
+  margin: 0 auto 2rem;
+}
+
+.title {
+  font-family: 'Viga', sans-serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 4.8vw, 4.8rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-bordeaux;
+
+  text-shadow:
+    0px 2px 6px rgba(0, 0, 0, 0.55),
+    0px 0px 8px rgba($color-black, 0.35);
+}
+
+
+
+.subtitle {
+  font-size: 1.9rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.divider {
+  display: block;
+  width: 85px;
+  height: 2px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(
+    to right,
+    rgba($color-white, 0),
+    rgba($color-accent, 0.8),
+    rgba($color-white, 0)
+  );
+}
+
+.tagline {
+  max-width: 540px;
+  margin: 0 auto;
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+/******** RESPONSIVE ********/
+
+@include up-to(768px) {
+  .title {
+    letter-spacing: 0.18em;
+  }
+  .subtitle {
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+  }
+}

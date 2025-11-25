@@ -1,0 +1,96 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+  @include section-padding;
+  background-color: $color-bg-light;
+}
+
+.inner {
+  @include container;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  h2 {
+    font-family: $font-title;
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    max-width: 540px;
+    margin: 0 auto;
+    color: $color-muted;
+    font-size: 0.98rem;
+  }
+}
+
+.underline {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: $color-accent;
+  margin: 1.75rem auto 0;
+}
+
+/* === GALERIE FLEX / RESPONSIVE === */
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem; // léger
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  /* IMPORTANT : virer les marges par défaut des <figure> */
+  margin: 0;
+  list-style: none;
+
+  flex: 0 0 calc(25% - 0.5rem);   // 4 par ligne sur desktop
+  max-width: calc(25% - 0.5rem);
+
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Wrapper pour Next/Image fill */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3; // passe à 1 / 1 si tu veux carré
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.35s ease-out;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+/* === RESPONSIVE === */
+
+/* Tablette : 3 par ligne */
+@include up-to(1024px) {
+  .card {
+    flex: 0 0 calc(33.333% - 0.5rem);
+    max-width: calc(33.333% - 0.5rem);
+  }
+}
+
+/* Mobile : 2 par ligne */
+@include up-to(768px) {
+  .card {
+    flex: 0 0 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
+  }
+}

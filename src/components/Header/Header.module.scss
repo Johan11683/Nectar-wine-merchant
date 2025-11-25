@@ -1,0 +1,82 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    to bottom,
+    rgba($color-black, 0.9),
+    rgba($color-black, 0.4),
+    transparent
+  );
+  color: $color-white;
+}
+
+.inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 240px;
+  height: 70px;
+
+}
+
+.logo {
+  object-fit: contain;
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  a {
+    position: relative;
+    padding-block: 0.25rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-bordeaux;
+      transition: width 0.2s ease-out;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+@include up-to(768px) {
+  .nav {
+    gap: 1.25rem;
+    font-size: 0.8rem;
+  }
+}
