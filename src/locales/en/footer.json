@@ -1,5 +1,4 @@
 {
-  "footer": {
     "brand_tagline": "Fine wine merchant serving private clients and professionals around the world.",
     "cols": {
       "navigation_title": "Navigation",
@@ -20,5 +19,4 @@
     "bottom": {
       "full_notice": "© {{year}} Nectar Wine Merchant. All rights reserved. Alcohol abuse is dangerous for your health, consume with moderation."
     }
-  }
 }

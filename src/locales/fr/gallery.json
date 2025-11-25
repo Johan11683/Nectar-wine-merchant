@@ -1,7 +1,5 @@
 {
-  "gallery": {
     "title": "Notre collection",
     "intro": "La recherche de vos plus grands vins est plus qu'un métier, c'est plus qu'une passion, c'est notre lifestyle :",
     "image_alt_pattern": "Photo dans le thème du vin – visuel {{index}}"
-  }
 }

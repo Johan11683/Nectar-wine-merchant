@@ -1,14 +1,19 @@
+'use client';
+
 import Image from 'next/image';
 import styles from './Hero.module.scss';
+import { useTranslation } from 'react-i18next';
 
 export default function Hero() {
+  const { t } = useTranslation('hero');
+
   return (
     <section id="top" className={styles.hero}>
       {/* Image plein écran */}
       <div className={styles.imageWrapper}>
         <Image
           src="/images/hero.png"
-          alt="Sélection de grands vins"
+          alt={t('image_alt')}
           fill
           priority
           quality={75}
@@ -25,27 +30,31 @@ export default function Hero() {
       {/* Contenu */}
       <div className={styles.content}>
         <div className={styles.heroLogoWrapper}>
-  <Image
-    src="/images/logo.png"
-    alt="Nectar Wine Merchant"
-    width={80}
-    height={80}
-    priority
-    className={styles.heroLogo}
-  />
-</div>
+          <Image
+            src="/images/logo.png"
+            alt="Nectar Wine Merchant"
+            width={80}
+            height={80}
+            priority
+            className={styles.heroLogo}
+          />
+        </div>
 
-
-        <h1 className={styles.title}>Nectar <br/>Wine Merchant</h1>
+        <h1 className={styles.title}>
+          {t('title_line1')} <br />
+          {t('title_line2')}
+        </h1>
 
         <p className={styles.subtitle}>
-          Négociant en vins d&apos;exception
+          {t('subtitle')}
         </p>
 
         <span className={styles.divider} />
 
         <p className={styles.tagline}>
-          Bonne ambiance, belles bouteilles. <br/> On s&apos;occupe des vins, vous profitez du moment.
+          {t('tagline_line1')} <br />
+          {t('tagline_line2')} <br />
+          {t('tagline_line3')}
         </p>
       </div>
     </section>

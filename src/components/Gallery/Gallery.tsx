@@ -1,5 +1,8 @@
+'use client';
+
 import styles from './Gallery.module.scss';
 import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 
 const IMAGES = [
   '/images/theboyz.jpeg',
@@ -38,12 +41,11 @@ const IMAGES = [
   '/images/image (32).jpeg',
   '/images/image (33).jpeg',
   '/images/image (34).png',
-
-
-
 ];
 
 export default function Gallery() {
+  const { t } = useTranslation('gallery');
+
   return (
     <section
       id="gallery"
@@ -51,11 +53,10 @@ export default function Gallery() {
       aria-labelledby="collection-title"
     >
       <div className={styles.inner}>
+
         <header className={styles.header}>
-          <h2 id="collection-title">Notre collection</h2>
-          <p>
-            La recherche de vos plus grands vins est plus qu&apos;un métier, c&apos;est plus qu&apos;une passion,  c&apos;est notre lifestyle :
-          </p>
+          <h2 id="collection-title">{t('title')}</h2>
+          <p>{t('intro')}</p>
           <span className={styles.underline} />
         </header>
 
@@ -65,7 +66,7 @@ export default function Gallery() {
               <div className={styles.imageWrapper}>
                 <Image
                   src={src}
-                  alt={`Photo dans le thème du vin – visuel ${index + 1}`}
+                  alt={t('image_alt_pattern', { index: index + 1 })}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className={styles.image}

@@ -1,0 +1,15 @@
+{
+  "links": {
+    "about": "À propos",
+    "gallery": "Collection",
+    "contact": "Contact"
+  },
+  "aria": {
+    "main_nav": "Navigation principale",
+    "menu_button": "Menu"
+  },
+  "langSwitch": {
+    "fr": "FR",
+    "en": "EN"
+  }
+}
