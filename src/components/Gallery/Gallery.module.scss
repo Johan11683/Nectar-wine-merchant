@@ -42,28 +42,27 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem; // léger
+  gap: 0.5rem;
   padding: 0;
   margin: 0;
 }
 
 .card {
-  /* IMPORTANT : virer les marges par défaut des <figure> */
   margin: 0;
   list-style: none;
 
-  flex: 0 0 calc(25% - 0.5rem);   // 4 par ligne sur desktop
+  flex: 0 0 calc(25% - 0.5rem);
   max-width: calc(25% - 0.5rem);
 
   border-radius: 8px;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
-/* Wrapper pour Next/Image fill */
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3; // passe à 1 / 1 si tu veux carré
+  aspect-ratio: 4 / 3;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -79,7 +78,6 @@
 
 /* === RESPONSIVE === */
 
-/* Tablette : 3 par ligne */
 @include up-to(1024px) {
   .card {
     flex: 0 0 calc(33.333% - 0.5rem);
@@ -87,7 +85,6 @@
   }
 }
 
-/* Mobile : 2 par ligne */
 @include up-to(768px) {
   .card {
     flex: 0 0 calc(50% - 0.5rem);
@@ -95,9 +92,8 @@
   }
 }
 
-/* Actions sous la grille (bouton Voir plus) */
 .actions {
-  display: none; // par défaut caché (desktop)
+  display: none;
 
   @include up-to(1024px) {
     display: flex;
@@ -123,15 +119,72 @@
   }
 }
 
-/* === LOGIQUE < 1024px : limiter à 8 images puis déplier === */
+/* === LOGIQUE < 1024px : limiter à 8 images === */
 @include up-to(1024px) {
-  /* Par défaut : on cache toutes les cartes à partir de la 9e */
   .card:nth-child(n + 9) {
     display: none;
   }
 
-  /* Quand la grille a la classe .gridExpanded (showAll = true) → tout s'affiche */
   .gridExpanded .card {
     display: block;
+  }
+}
+
+/* === LIGHTBOX === */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 300;
+  animation: fadeIn 0.25s ease-out;
+  cursor: zoom-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightboxInner {
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: default;
+}
+
+.lightboxImage {
+  object-fit: cover;
+  animation: zoomIn 0.35s ease-out;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 2rem;
+  line-height: 1;
+  color: white;
+  background: rgba(0, 0, 0, 0.35);
+  border: none;
+  border-radius: 6px;
+  padding: 0.1rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.55);
   }
 }

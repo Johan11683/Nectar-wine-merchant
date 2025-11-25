@@ -10,7 +10,7 @@ const IMAGES = [
   '/images/palette.jpeg',
   '/images/image (1).jpeg',
   '/images/image (2).jpeg',
-  '/images/image (3).jpeg',
+  '/images/image (35).jpeg',
   '/images/image (4).jpeg',
   '/images/image (5).jpeg',
   '/images/image (6).jpeg',
@@ -49,6 +49,8 @@ const INITIAL_VISIBLE = 8;
 export default function Gallery() {
   const { t } = useTranslation('gallery');
   const [showAll, setShowAll] = useState(false);
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+
 
   return (
     <section
@@ -68,7 +70,12 @@ export default function Gallery() {
           role="list"
         >
           {IMAGES.map((src, index) => (
-            <figure key={src} className={styles.card} role="listitem">
+            <figure
+              key={src}
+              className={styles.card}
+              role="listitem"
+              onClick={() => setLightboxSrc(src)}
+            >
               <div className={styles.imageWrapper}>
                 <Image
                   src={src}
@@ -95,6 +102,35 @@ export default function Gallery() {
           </div>
         )}
       </div>
+
+      {/* LIGHTBOX */}
+      {lightboxSrc && (
+        <div
+          className={styles.lightbox}
+          onClick={() => setLightboxSrc(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className={styles.lightboxInner}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={lightboxSrc}
+              alt="Large preview"
+              fill
+              className={styles.lightboxImage}
+            />
+
+            <button
+              className={styles.closeButton}
+              onClick={() => setLightboxSrc(null)}
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

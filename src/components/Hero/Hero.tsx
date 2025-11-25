@@ -15,6 +15,7 @@ export default function Hero() {
           src="/images/hero.png"
           alt={t('image_alt')}
           fill
+          sizes="1200px"
           priority
           quality={75}
           className={styles.image}
@@ -41,8 +42,9 @@ export default function Hero() {
         </div>
 
         <h1 className={styles.title}>
-          {t('title_line1')} <br />
+          {t('title_line1')} <br/>
           {t('title_line2')}
+
         </h1>
 
         <p className={styles.subtitle}>
@@ -52,8 +54,9 @@ export default function Hero() {
         <span className={styles.divider} />
 
         <p className={styles.tagline}>
-          {t('tagline_line1')} <br />
-          {t('tagline_line2')}
+          {t('tagline1')} <br/>
+          {t('tagline2')} <br/>
+          {t('tagline3')}
         </p>
       </div>
     </section>

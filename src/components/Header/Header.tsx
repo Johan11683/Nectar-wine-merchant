@@ -54,6 +54,7 @@ export default function Header() {
               src="/images/Logo_Transparent.png"
               alt="Nectar Wine Merchant Logo"
               fill
+              sizes="240px"
               priority
               className={styles.logo}
             />

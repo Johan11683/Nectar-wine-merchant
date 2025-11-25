@@ -30,6 +30,7 @@ export default function About() {
               src="/images/palette1.jpeg"
               alt="Palette de caisses de vin"
               fill
+              sizes="240px"
               className={styles.image}
             />
           </div>
@@ -39,6 +40,7 @@ export default function About() {
               src="/images/lineBottles1.png"
               alt="Sélection de bouteilles"
               fill
+              sizes="240px"
               className={styles.image}
             />
           </div>
@@ -48,6 +50,7 @@ export default function About() {
               src="/images/duo.jpg"
               alt="Les deux fondateurs"
               fill
+              sizes="240px"
               className={styles.image}
             />
           </div>
@@ -57,6 +60,7 @@ export default function About() {
               src="/images/barrels.jpg"
               alt="Palette de caisses de vin"
               fill
+              sizes="240px"
               className={styles.image}
             />
           </div>
