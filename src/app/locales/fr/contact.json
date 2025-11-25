@@ -1,0 +1,24 @@
+{
+  "contact": {
+    "title": "Contactez-nous",
+    "intro": "Notre équipe est à votre disposition pour répondre à vos questions et vous accompagner dans la sélection de vos vins d'exception.",
+    "address": {
+      "line1": "16 Place des Quinconces",
+      "line2": "33000 Bordeaux, France"
+    },
+    "phone_label": "Téléphone",
+    "email_label": "Email",
+    "hours_title": "Horaires d'ouverture",
+    "hours_text": "Sur rendez-vous, contactez-nous !",
+    "form": {
+      "fullname_label": "Nom complet",
+      "email_label": "Email",
+      "phone_label": "Téléphone",
+      "message_label": "Message",
+      "submit_idle": "Envoyer le message",
+      "submit_loading": "Envoi en cours…",
+      "success": "Merci, votre message a bien été envoyé.",
+      "error": "Une erreur est survenue. Merci de réessayer plus tard."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "header": {
+    "links": {
+      "about": "About",
+      "gallery": "Collection",
+      "contact": "Contact"
+    },
+    "aria": {
+      "main_nav": "Main navigation",
+      "menu_button": "Menu"
+    },
+    "langSwitch": {
+      "fr": "FR",
+      "en": "EN"
+    }
+  }
+}

@@ -10,7 +10,6 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        
         {/* LOGO */}
         <a href="#top" className={styles.brand}>
           <div className={styles.logoWrapper}>
@@ -24,24 +23,43 @@ export default function Header() {
           </div>
         </a>
 
-        {/* BURGER BUTTON */}
+        {/* BURGER BUTTON (mobile) */}
         <button
           className={styles.burger}
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
         >
           <span />
           <span />
           <span />
         </button>
 
-        {/* NAVIGATION */}
-        <nav className={`${styles.nav} ${open ? styles.open : ''}`}>
-          <a href="#about" onClick={() => setOpen(false)}>À propos</a>
-          <a href="#gallery" onClick={() => setOpen(false)}>Collection</a>
-          <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
-        </nav>
+        {/* NAVIGATION + LANG SWITCH */}
+        <nav
+          className={`${styles.nav} ${open ? styles.open : ''}`}
+          aria-label="Navigation principale"
+        >
+          <a href="#about" onClick={() => setOpen(false)}>
+            À propos
+          </a>
+          <a href="#gallery" onClick={() => setOpen(false)}>
+            Collection
+          </a>
+          <a href="#contact" onClick={() => setOpen(false)}>
+            Contact
+          </a>
 
+          {/* Switch FR / EN */}
+          <div className={styles.langSwitch}>
+            <button type="button" data-lang="fr" data-active="true">
+              FR
+            </button>
+            <button type="button" data-lang="en">
+              EN
+            </button>
+          </div>
+        </nav>
       </div>
     </header>
   );
