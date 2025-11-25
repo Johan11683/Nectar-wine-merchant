@@ -1,5 +1,7 @@
 {
-    "title": "Our collection",
-    "intro": "Sourcing your greatest wines is more than a job, more than a passion : it's our lifestyle",
-    "image_alt_pattern": "Wine-themed photograph – visual {{index}}"
+  "title": "Our collection",
+  "intro": "Sourcing your greatest wines is more than a job, more than a passion : it's our lifestyle",
+  "image_alt_pattern": "Wine-themed photograph – visual {{index}}",
+  "see_more": "View more",
+  "see_less": "Show fewer images"
 }

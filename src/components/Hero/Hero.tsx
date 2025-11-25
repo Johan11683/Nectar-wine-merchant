@@ -53,8 +53,7 @@ export default function Hero() {
 
         <p className={styles.tagline}>
           {t('tagline_line1')} <br />
-          {t('tagline_line2')} <br />
-          {t('tagline_line3')}
+          {t('tagline_line2')}
         </p>
       </div>
     </section>

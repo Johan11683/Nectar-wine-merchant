@@ -94,3 +94,44 @@
     max-width: calc(50% - 0.5rem);
   }
 }
+
+/* Actions sous la grille (bouton Voir plus) */
+.actions {
+  display: none; // par défaut caché (desktop)
+
+  @include up-to(1024px) {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+}
+
+.moreButton {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.5);
+    transform: translateY(-1px);
+  }
+}
+
+/* === LOGIQUE < 1024px : limiter à 8 images puis déplier === */
+@include up-to(1024px) {
+  /* Par défaut : on cache toutes les cartes à partir de la 9e */
+  .card:nth-child(n + 9) {
+    display: none;
+  }
+
+  /* Quand la grille a la classe .gridExpanded (showAll = true) → tout s'affiche */
+  .gridExpanded .card {
+    display: block;
+  }
+}

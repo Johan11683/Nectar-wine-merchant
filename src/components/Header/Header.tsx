@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 import styles from './Header.module.scss';
@@ -14,18 +14,41 @@ export default function Header() {
   function handleChangeLang(lang: 'en' | 'fr') {
     if (lang === currentLang) return;
 
+    // ferme le menu si on change de langue (mobile)
+    setOpen(false);
     i18n.changeLanguage(lang);
-    // Met à jour <html lang="..."> pour accessibilité / SEO
-    if (typeof document !== 'undefined') {
-      document.documentElement.lang = lang;
-    }
   }
+
+  // met à jour <html lang> + persiste la langue
+  useEffect(() => {
+    const shortLang = (i18n.language || 'en').slice(0, 2);
+
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = shortLang;
+    }
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('nectar-lang', shortLang);
+    }
+  }, [i18n.language]);
+
+  // récupère la langue au montage (si déjà choisie)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const saved = window.localStorage.getItem('nectar-lang') as 'en' | 'fr' | null;
+    if (!saved) return;
+
+    const currentShort = (i18n.language || 'en').slice(0, 2);
+    if (saved !== currentShort) {
+      i18n.changeLanguage(saved);
+    }
+  }, [i18n]);
 
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
         {/* LOGO */}
-        <a href="#top" className={styles.brand}>
+        <a href="#top" className={styles.brand} onClick={() => setOpen(false)}>
           <div className={styles.logoWrapper}>
             <Image
               src="/images/Logo_Transparent.png"
@@ -40,7 +63,7 @@ export default function Header() {
         {/* BURGER BUTTON (mobile) */}
         <button
           className={styles.burger}
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((prev) => !prev)}
           aria-label={t('aria.menu_button')}
           aria-expanded={open}
         >

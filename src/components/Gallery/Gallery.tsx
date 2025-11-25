@@ -3,6 +3,7 @@
 import styles from './Gallery.module.scss';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 const IMAGES = [
   '/images/theboyz.jpeg',
@@ -43,8 +44,11 @@ const IMAGES = [
   '/images/image (34).png',
 ];
 
+const INITIAL_VISIBLE = 8;
+
 export default function Gallery() {
   const { t } = useTranslation('gallery');
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <section
@@ -53,14 +57,16 @@ export default function Gallery() {
       aria-labelledby="collection-title"
     >
       <div className={styles.inner}>
-
         <header className={styles.header}>
           <h2 id="collection-title">{t('title')}</h2>
           <p>{t('intro')}</p>
           <span className={styles.underline} />
         </header>
 
-        <div className={styles.grid} role="list">
+        <div
+          className={`${styles.grid} ${showAll ? styles.gridExpanded : ''}`}
+          role="list"
+        >
           {IMAGES.map((src, index) => (
             <figure key={src} className={styles.card} role="listitem">
               <div className={styles.imageWrapper}>
@@ -75,6 +81,19 @@ export default function Gallery() {
             </figure>
           ))}
         </div>
+
+        {IMAGES.length > INITIAL_VISIBLE && (
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={styles.moreButton}
+              onClick={() => setShowAll(prev => !prev)}
+              aria-expanded={showAll}
+            >
+              {showAll ? t('see_less') : t('see_more')}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

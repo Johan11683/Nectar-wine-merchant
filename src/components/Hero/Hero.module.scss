@@ -30,11 +30,12 @@
 .darkOverlay {
   position: absolute;
   inset: 0;
+  // plus clair, surtout au centre
   background: linear-gradient(
     to bottom,
-    rgba($color-black, 0.85),
-    rgba($color-black, 0.75),
-    rgba($color-black, 0.65)
+    rgba($color-black, 0.55),
+    rgba($color-black, 0.38),
+    rgba($color-black, 0.22)
   );
   z-index: -3;
 }
@@ -42,9 +43,10 @@
 .bordeauxOverlay {
   position: absolute;
   inset: 0;
+  // halo bordeaux plus subtil
   background: radial-gradient(
-    circle at 50% 20%,
-    rgba($color-bordeaux, 0.35),
+    circle at 50% 35%,
+    rgba($color-bordeaux, 0.25),
     transparent 70%
   );
   mix-blend-mode: soft-light;
@@ -54,7 +56,12 @@
 .vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.85) 100%);
+  // vignette moins agressive, juste pour tenir le cadre
+  background: radial-gradient(
+    circle,
+    transparent 68%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
   pointer-events: none;
   z-index: -1;
 }
@@ -62,11 +69,11 @@
 .grain {
   position: absolute;
   inset: 0;
-  opacity: 0.14;
+  opacity: 0.08; // un peu moins de grain
   pointer-events: none;
   background-image:
     linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.18) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(0, 0, 0, 0.14) 1px, transparent 1px);
   background-size: 100% 2px, 2px 100%;
   mix-blend-mode: soft-light;
   z-index: -1;
@@ -84,7 +91,6 @@
 .heroLogo {
   object-fit: contain;
 }
-
 
 .content {
   position: relative;
@@ -109,16 +115,24 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: $color-bordeaux;
-
   text-shadow:
-    0px 2px 6px rgba(0, 0, 0, 0.55),
-    0px 0px 8px rgba($color-black, 0.35);
+    0px 2px 6px rgba(0, 0, 0, 0.45),
+    0px 0px 8px rgba($color-black, 0.25);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+
 }
 
+.titleWrapper {
+  backdrop-filter: blur(3px);
+  padding: 0.3rem 1rem;
+  border-radius: 4px;
+}
 
 
 .subtitle {
   font-size: 1.9rem;
+  font-family: 'Cormorant Garamond', serif;
+  color: rgba(255, 255, 255, 0.85); // Blanc cassé luxe
   letter-spacing: 0.22em;
   text-transform: uppercase;
   opacity: 0.9;
@@ -140,17 +154,30 @@
 
 .tagline {
   max-width: 540px;
+  font-family: 'Cormorant Garamond', serif;
+  color: rgba(255, 255, 255, 0.85); // Blanc cassé luxe
   margin: 0 auto;
   font-size: 1.3rem;
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /******** RESPONSIVE ********/
 
 @include up-to(768px) {
+  .darkOverlay {
+    // encore un peu plus léger sur mobile
+    background: linear-gradient(
+      to bottom,
+      rgba($color-black, 0.45),
+      rgba($color-black, 0.3),
+      rgba($color-black, 0.18)
+    );
+  }
+
   .title {
     letter-spacing: 0.18em;
   }
+
   .subtitle {
     font-size: 0.8rem;
     letter-spacing: 0.16em;
