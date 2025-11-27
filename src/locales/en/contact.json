@@ -1,11 +1,12 @@
 {
     "title": "Contact us",
     "intro": "Our team is at your disposal to answer your questions and help you select your exceptional wines.",
-    "address_label": "Address",
+    "address": "16 Place des Quinconces - 33000 Bordeaux, France",
     "phone_label": "Phone",
     "email_label": "Email",
     "hours_title": "Opening hours",
     "hours_text": "By appointment only, contact us!",
+    "whatsapp_label": "WhatsApp - Direct line",
     "form": {
       "fullname_label": "Full name",
       "email_label": "Email",

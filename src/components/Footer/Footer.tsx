@@ -2,6 +2,7 @@
 
 import styles from './Footer.module.scss';
 import { useTranslation } from 'react-i18next';
+import Image from 'next/image';
 
 export default function Footer() {
   const { t } = useTranslation('footer');
@@ -16,6 +17,23 @@ export default function Footer() {
           <p className={styles.tagline}>
             {t('brand_tagline')}
           </p>
+
+          <a
+            className={styles.instaLink}
+            href="https://www.instagram.com/nectar_wine_merchant/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram — Nectar Wine Merchant"
+          >
+            <Image
+              src="/images/instalogo.webp"
+              alt="Instagram logo"
+              width={22}
+              height={22}
+              className={styles.instaIcon}
+            />
+            <span>{t('cols.instagram')}</span>
+          </a>
         </div>
 
         {/* Colonnes de liens */}

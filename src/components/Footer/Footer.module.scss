@@ -33,6 +33,32 @@
     font-size: 0.95rem;
     color: rgba($color-white, 0.78);
   }
+
+  .instaLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: rgba($color-white, 0.78);
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+
+    &:hover {
+      color: $color-white;
+
+      .instaIcon {
+        opacity: 1;
+        transform: scale(1.08);
+      }
+    }
+  }
+
+  .instaIcon {
+    opacity: 0.85;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    display: block;
+  }
 }
 
 /* Colonnes de liens */
@@ -58,6 +84,7 @@
   a {
     display: inline-block;
     position: relative;
+    text-decoration: none;
 
     &::after {
       content: '';

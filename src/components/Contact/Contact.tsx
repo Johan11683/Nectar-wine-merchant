@@ -4,6 +4,10 @@ import { useState, FormEvent } from 'react';
 import styles from './Contact.module.scss';
 import { useTranslation } from 'react-i18next';
 
+const PHONE_DISPLAY = '+33 6 81 61 42 57';
+const PHONE_TEL = '+33681614257';
+const WHATSAPP_URL = 'https://wa.me/33681614257';
+
 export default function Contact() {
   const { t } = useTranslation('contact');
 
@@ -51,7 +55,6 @@ export default function Contact() {
   return (
     <section id="contact" className={styles.section} aria-labelledby="contact-title">
       <div className={styles.inner}>
-        
         {/* ----- COLONNE INFO ----- */}
         <div className={styles.info}>
           <h2 id="contact-title" className={styles.heading}>
@@ -64,13 +67,28 @@ export default function Contact() {
             <li>
               <span className={styles.icon}>📍</span>
               <span>
-                {t('16 Place des Quinconces - 33000 Bordeaux - France')}<br />
+                {t('address')}
+                <br />
               </span>
             </li>
 
             <li>
               <span className={styles.icon}>📞</span>
-              <a href={`tel:+33681614257`}>{t('phone_label')}: +33 6 81 61 42 57</a>
+              <a href={`tel:${PHONE_TEL}`}>
+                {t('phone_label')}: {PHONE_DISPLAY}
+              </a>
+            </li>
+
+            <li>
+              <span className={styles.icon}>💬</span>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t('whatsapp_label')}: ${PHONE_DISPLAY}`}
+              >
+                {t('whatsapp_label')}: {PHONE_DISPLAY}
+              </a>
             </li>
 
             <li>
@@ -89,7 +107,6 @@ export default function Contact() {
 
         {/* ----- FORMULAIRE ----- */}
         <form className={styles.form} onSubmit={handleSubmit}>
-          
           <div className={styles.field}>
             <label htmlFor="name">{t('form.fullname_label')}</label>
             <input
@@ -152,17 +169,28 @@ export default function Contact() {
           </button>
 
           {status === 'success' && (
-            <p style={{ fontSize: '0.9rem', color: 'green', marginTop: '0.75rem' }}>
+            <p
+              style={{
+                fontSize: '0.9rem',
+                color: 'green',
+                marginTop: '0.75rem',
+              }}
+            >
               {t('form.success')}
             </p>
           )}
           {status === 'error' && (
-            <p style={{ fontSize: '0.9rem', color: 'crimson', marginTop: '0.75rem' }}>
+            <p
+              style={{
+                fontSize: '0.9rem',
+                color: 'crimson',
+                marginTop: '0.75rem',
+              }}
+            >
               {t('form.error')}
             </p>
           )}
         </form>
-
       </div>
     </section>
   );

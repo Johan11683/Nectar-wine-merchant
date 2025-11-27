@@ -1,22 +1,23 @@
 {
-    "brand_tagline": "Négociant de vins d'exception, au service de particuliers et de professionnels, à travers le monde.",
-    "cols": {
-      "navigation_title": "Navigation",
-      "contact_title": "Contact",
-      "legal_title": "Légal",
-      "nav_links": {
-        "about": "À propos",
-        "gallery": "Collection",
-        "contact": "Contact"
-      },
-      "address": {
-        "line1": "16 Place des Quinconces",
-        "line2": "33000 Bordeaux • France"
-      },
-      "email": "a.bellone@nectar-winemerchant.com",
-      "legal_link": "Mentions légales"
+  "brand_tagline": "Négociant de vins d'exception, au service de particuliers et de professionnels, à travers le monde.",
+  "cols": {
+    "navigation_title": "Navigation",
+    "contact_title": "Contact",
+    "legal_title": "Légal",
+    "nav_links": {
+      "about": "À propos",
+      "gallery": "Collection",
+      "contact": "Contact"
     },
-    "bottom": {
-      "full_notice": "© {{year}} Nectar Wine Merchant. Tous droits réservés. L'abus d'alcool est dangereux pour la santé, à consommer avec modération."
-    }
+    "address": {
+      "line1": "16 Place des Quinconces",
+      "line2": "33000 Bordeaux • France"
+    },
+    "email": "a.bellone@nectar-winemerchant.com",
+    "instagram": "Instagram",
+    "legal_link": "Mentions légales"
+  },
+  "bottom": {
+    "full_notice": "© {{year}} Nectar Wine Merchant. Tous droits réservés. L'abus d'alcool est dangereux pour la santé, à consommer avec modération."
+  }
 }
