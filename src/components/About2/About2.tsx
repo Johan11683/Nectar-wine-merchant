@@ -21,7 +21,7 @@ export default function About() {
 
       <div className={styles.right}>
         <Image
-          src="/images/bottleLine.jpg"
+          src="/images/cellarBarrels.jpeg"
           alt="Palette de caisses de vin"
           fill
           priority

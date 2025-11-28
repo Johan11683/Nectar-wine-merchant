@@ -105,7 +105,6 @@ export default function Contact() {
                 height={22}
                 className={styles.waLogo}
               />
-              <span>{PHONE_DISPLAY}</span>
             </a>
           </div>
         </div>

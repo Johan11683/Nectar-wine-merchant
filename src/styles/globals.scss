@@ -96,3 +96,17 @@ main {
 #footer {
   min-height: 10vh; // par ex
 }
+
+/* === Désactivation du scroll-snap en dessous de 1024px === */
+@media (max-width: 1024px) {
+  .snap-container {
+    scroll-snap-type: none;
+    scroll-padding-top: 0;
+    overflow-y: auto; // scroll normal
+  }
+
+  .snap-container > section {
+    scroll-snap-align: none;
+    min-height: auto; // hauteur naturelle sur mobile / tablette
+  }
+}

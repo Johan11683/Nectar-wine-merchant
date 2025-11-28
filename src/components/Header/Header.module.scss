@@ -14,9 +14,9 @@
   /* ↓ Version transparente lorsqu'on est dans le hero */
   background: linear-gradient(
     to bottom,
-    rgba($color-black, 0.6) 0%,
-    rgba($color-black, 0.25) 40%,
-    rgba($color-black, 0) 100%
+    rgba($color-white, 0.6) 0%,
+    rgba($color-white, 0.25) 40%,
+    rgba($color-white, 0) 100%
   );
 
   backdrop-filter: blur(4px);
@@ -25,18 +25,17 @@
 
 /* ↓ Version “scrolled” = header noir foncé plein */
 .scrolled {
-  background: $color-black;  // noir plein, pas de gradient
+  background: $color-white;  // noir plein, pas de gradient
   backdrop-filter: blur(8px); // tu peux mettre "none" si tu ne veux pas de flou
-  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
-
 
 .inner {
   @include container;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 0.85rem;
+  padding-block: 0.1rem;
 }
 
 /* ░░░ LOGO ░░░ */
@@ -48,8 +47,8 @@
 
 .logoWrapper {
   position: relative;
-  width: 240px;
-  height: 74px;
+  width: 280px;
+  height: 96px;
 }
 
 .logo {
@@ -69,7 +68,7 @@
   span {
     width: 26px;
     height: 2px;
-    background: $color-white;
+    background: $color-bordeaux;
     transition: 0.3s;
   }
 }
@@ -89,13 +88,18 @@
   display: flex;
   align-items: center;
   gap: 2.2rem;
+  font-weight: 500;
 
   a {
     position: relative;
     text-decoration: none;
-    color: rgba($color-white, 0.9);
+    color: rgba($color-bordeaux, 0.9);
     padding-block: 0.2rem;
+  }
 
+  /* Animation underline uniquement pour les liens texte,
+     pas pour le lien Instagram (.instaLink) */
+  a:not(.instaLink) {
     &::after {
       content: '';
       position: absolute;
@@ -113,6 +117,9 @@
   }
 }
 
+.instaLink {
+  text-decoration: none;
+}
 
 .contactLink {
   border: none;
@@ -131,6 +138,7 @@
 
 .langDivider {
   opacity: 0.8;
+  color: rgba($color-bordeaux, 0.9);
 }
 
 .langSwitch button {
@@ -139,13 +147,13 @@
   font-size: 0.8rem;
   padding: 0;
   cursor: pointer;
-  color: rgba($color-white, 0.75);
+  color: rgba($color-bordeaux, 0.75);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   transition: color 0.18s ease-out;
 
   &:hover {
-    color: $color-white;
+    color: $color-bordeaux;
   }
 
   &[data-active='true'] {
@@ -154,9 +162,11 @@
   }
 }
 
-/* ░░░ RESPONSIVE < 1024px ░░░ */
+
+/* ░░░ RESPONSIVE < 1024px — burger panel blanc luxe ░░░ */
 
 @include up-to(1024px) {
+
   .burger {
     display: flex;
   }
@@ -167,21 +177,21 @@
     right: 0;
     width: 260px;
 
-    padding: 1.8rem 1.6rem;
+    padding: 2rem 1.8rem;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.8rem;
 
-    background: rgba($color-black, 0.96);
-    backdrop-filter: blur(10px);
+    background: rgba($color-white, 1); // BLANC
+    backdrop-filter: blur(14px);          // BLUR LUXE
 
-    border-left: 1px solid rgba($color-white, 0.1);
-    border-bottom: 1px solid rgba($color-white, 0.05);
+    border-left: none;
+    border-bottom: none;
 
     transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    transition: transform 0.28s ease, opacity 0.28s ease;
+    transition: transform 0.35s ease, opacity 0.35s ease;
   }
 
   .nav.open {
@@ -190,30 +200,46 @@
     pointer-events: auto;
   }
 
+  /* Tous les liens deviennent bordeaux */
   .navLinks {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;
 
-    a::after {
-      display: none;
+    a {
+      color: $color-bordeaux;     // ← TEXTE BORDEAUX
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
     }
 
-    // CONTACT reste un simple lien dans le menu mobile
-    .contactLink {
-      width: auto;
-      text-align: left;
-      border-radius: 0;
+    a::after {
+      display: none; // aucune animation underline en mobile
+    }
+
+    .instaLink {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
   }
 
+  /* Lang switch en bordeaux aussi */
   .langSwitch {
     width: 100%;
-    justify-content: center;
-    padding-top: 1.1rem;
-    border-top: 1px solid rgba($color-white, 0.14);
+    justify-content: flex-start;
+    padding-top: 1.2rem;
+    border-top: 1px solid rgba($color-bordeaux, 0.2);
+
+    button {
+      color: $color-bordeaux;
+    }
+
+    .langDivider {
+      color: rgba($color-bordeaux, 0.8);
+    }
   }
 }
+
 
 /* ░░░ RESPONSIVE < 640px ░░░ */
 

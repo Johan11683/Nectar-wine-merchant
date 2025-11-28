@@ -177,6 +177,18 @@
   }
 }
 
+/* Masquer l’indicateur de scroll en dessous de 1024px */
+
+@media (max-width: 1024px) {
+  .mouse {
+    display: none;
+  }
+
+  .scrollText {
+    display: none;
+  }
+}
+
 /******** PRÉFÉRENCE RÉDUCTION MOUVEMENT ********/
 
 @media (prefers-reduced-motion: reduce) {

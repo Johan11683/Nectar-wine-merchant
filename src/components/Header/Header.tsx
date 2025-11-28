@@ -109,10 +109,6 @@ export default function Header() {
             <a href="#about" onClick={() => setOpen(false)}>
               {t('links.about')}
             </a>
-            <a href="#gallery" onClick={() => setOpen(false)}>
-              {t('links.gallery')}
-            </a>
-
             <a
               href="#contact"
               className={styles.contactLink}

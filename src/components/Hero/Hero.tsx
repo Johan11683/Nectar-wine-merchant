@@ -41,14 +41,12 @@ export default function Hero() {
 
       {/* Contenu centré */}
       <div className={styles.content}>
-        <p className={styles.kicker}>
-          {t('kicker', {t : 'Négociant en vins d’exception' })}
+        <p className={styles.title}>
+          {t('kicker')}
         </p>
-
-        <h1 className={styles.title}>
-          <span>{t('title_line1')}</span>
-          <span className={styles.titleLine}>{t('title_line2')}</span>
-        </h1>
+        <p className={styles.kicker}>
+          {t('kicker2')}
+        </p>
       </div>
 
       {/* Indicateur de scroll */}
