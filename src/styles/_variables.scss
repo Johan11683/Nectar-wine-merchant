@@ -1,4 +1,7 @@
-// Couleurs principales
+// ─────────────────────────────────────────────
+// 🎨 PALETTE COULEURS
+// ─────────────────────────────────────────────
+
 $color-black: #11100f;
 $color-bordeaux: #5c0c14;
 $color-bordeaux-dark: #3c0f1a;
@@ -10,10 +13,26 @@ $color-accent: #c25a06;
 $color-white-other: rgba(255, 255, 255, 0.85);
 
 
-// Layout
+// ─────────────────────────────────────────────
+// 📐 LAYOUT
+// ─────────────────────────────────────────────
+
 $container-width: 1200px;
 $section-padding-y: 6rem;
 
-// Typo
+
+// ─────────────────────────────────────────────
+// ✒️ TYPOGRAPHIE (MIX LUXE + LISIBILITÉ)
+// ─────────────────────────────────────────────
+
+// Typo ultra lisible — utilisée pour :
+// paragraphes, listes, labels, formulaire
 $font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-$font-title: 'Playfair Display', 'Georgia', serif;
+
+// Typo luxe serif — utilisation subtile :
+// sous-titres raffinés, taglines, petits accents premium
+$font-serif: 'Cormorant Garamond', serif;
+
+// Typo premium moderne — utilisée pour :
+// Hero, H1, grands titres
+$font-title: 'Viga', sans-serif;

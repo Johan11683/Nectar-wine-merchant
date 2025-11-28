@@ -12,12 +12,12 @@ export default function Hero() {
       {/* Image plein écran */}
       <div className={styles.imageWrapper}>
         <Image
-          src="/images/hero2.png"
+          src="/images/hero1.webp"
           alt={t('image_alt')}
           fill
-          sizes="1200px"
+          sizes="100vw"   // ← LA bonne valeur pour un hero fullscreen
           priority
-          quality={75}
+          quality={70}    // valeur idéale pour un hero
           className={styles.image}
         />
       </div>

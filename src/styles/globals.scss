@@ -1,6 +1,31 @@
 @use './variables' as *;
-@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
 
+/* === FONTS LOCALES === */
+@font-face {
+  font-family: 'Viga';
+  src: url('/fonts/Viga-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700; // plage de poids du variable font
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/fonts/CormorantGaramond-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* === RESET / BASE === */
 
 *,
 *::before,
