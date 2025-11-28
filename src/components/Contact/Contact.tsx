@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import Image from 'next/image';
 import styles from './Contact.module.scss';
 import { useTranslation } from 'react-i18next';
 
@@ -72,29 +73,35 @@ export default function Contact() {
               </span>
             </li>
 
-            <li>
+            {/* Phone + WhatsApp sur une seule ligne */}
+            <li className={styles.phoneLine}>
               <span className={styles.icon}>📞</span>
-              <a href={`tel:${PHONE_TEL}`}>
-                {t('phone_label')}: {PHONE_DISPLAY}
-              </a>
-            </li>
 
-            <li>
-              <span className={styles.icon}>💬</span>
+              <a href={`tel:${PHONE_TEL}`} className={styles.phoneNumber}>
+                {PHONE_DISPLAY}
+              </a>
+
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${t('whatsapp_label')}: ${PHONE_DISPLAY}`}
+                className={styles.whatsappIcon}
+                aria-label={`${t('whatsapp_label')} ${PHONE_DISPLAY}`}
               >
-                {t('whatsapp_label')}: {PHONE_DISPLAY}
+                <Image
+                  src="/images/waLogo.png"
+                  alt="WhatsApp"
+                  width={20}
+                  height={20}
+                  className={styles.waLogo}
+                />
               </a>
             </li>
 
             <li>
               <span className={styles.icon}>✉️</span>
               <a href="mailto:a.bellone@nectar-winemerchant.com">
-                {t('email_label')}: a.bellone@nectar-winemerchant.com
+                a.bellone@nectar-winemerchant.com
               </a>
             </li>
           </ul>

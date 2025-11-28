@@ -48,8 +48,43 @@
   }
 }
 
+/* Ligne téléphone + WhatsApp */
+.phoneLine {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.phoneNumber {
+  color: $color-bordeaux;
+  font-weight: 600;
+}
+
+.whatsappIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.15rem;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
+
 .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
   font-size: 1.1rem;
+}
+
+.waLogo {
+  display: block;
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .hours {
@@ -124,6 +159,13 @@
   &:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba($color-bordeaux-dark, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: wait;
+    box-shadow: none;
+    transform: none;
   }
 }
 

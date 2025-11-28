@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Image plein écran */}
       <div className={styles.imageWrapper}>
         <Image
-          src="/images/hero.png"
+          src="/images/hero2.png"
           alt={t('image_alt')}
           fill
           sizes="1200px"
@@ -42,9 +42,8 @@ export default function Hero() {
         </div>
 
         <h1 className={styles.title}>
-          {t('title_line1')} <br/>
+          {t('title_line1')} <br />
           {t('title_line2')}
-
         </h1>
 
         <p className={styles.subtitle}>
@@ -54,8 +53,8 @@ export default function Hero() {
         <span className={styles.divider} />
 
         <p className={styles.tagline}>
-          {t('tagline1')} <br/>
-          {t('tagline2')} <br/>
+          {t('tagline1')} <br />
+          {t('tagline2')} <br />
           {t('tagline3')}
         </p>
       </div>
