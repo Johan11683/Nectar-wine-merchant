@@ -1,11 +1,11 @@
 {
     "title": "Contact us",
-    "intro": "Our team is at your disposal to answer your questions and help you select your exceptional wines.",
+    "who": "NECTAR WINE MERCHANT",
     "address": "16 Place des Quinconces - 33000 Bordeaux, France",
     "phone_label": "Phone",
     "email_label": "Email",
     "hours_title": "Opening hours",
-    "hours_text": "By appointment only, contact us!",
+    "hours_text": "Open Monday to Friday - 9 am to 6 pm ",
     "whatsapp_label": "WhatsApp - Direct line",
     "form": {
       "fullname_label": "Full name",

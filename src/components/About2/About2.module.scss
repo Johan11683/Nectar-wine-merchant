@@ -60,6 +60,17 @@
   object-position: center;
 }
 
+.section {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl; // inverse visuellement les colonnes
+}
+
+.left,
+.right {
+  direction: ltr; // remet le texte dans le bon sens
+}
+
+
 /* --- RESPONSIVE --- */
 
 @include up-to(900px) {

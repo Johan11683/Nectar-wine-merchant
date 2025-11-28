@@ -58,62 +58,60 @@ export default function Contact() {
       <div className={styles.inner}>
         {/* ----- COLONNE INFO ----- */}
         <div className={styles.info}>
+          <p className={styles.eyebrow}>{t('title')}</p>
+
           <h2 id="contact-title" className={styles.heading}>
-            {t('title')}
+            {t('who')}
           </h2>
 
-          <p>{t('intro')}</p>
+          <p className={styles.lead}>
+            {t('hours_text')}
+          </p>
 
-          <ul className={styles.details}>
-            <li>
-              <span className={styles.icon}>📍</span>
-              <span>
-                {t('address')}
-                <br />
-              </span>
-            </li>
+          <div className={styles.block}>
+            <p className={styles.label}>{t('address')}</p>
+          </div>
 
-            {/* Phone + WhatsApp sur une seule ligne */}
-            <li className={styles.phoneLine}>
-              <span className={styles.icon}>📞</span>
+          <div className={styles.block}>
+            <p className={styles.label}>{t('phone_label')}</p>
+            <a href={`tel:${PHONE_TEL}`} className={styles.value}>
+              {PHONE_DISPLAY}
+            </a>
+          </div>
 
-              <a href={`tel:${PHONE_TEL}`} className={styles.phoneNumber}>
-                {PHONE_DISPLAY}
-              </a>
+          <div className={styles.block}>
+            <p className={styles.label}>{t('email_label')}</p>
+            <a
+              href="mailto:a.bellone@nectar-winemerchant.com"
+              className={styles.value}
+            >
+              a.bellone@nectar-winemerchant.com
+            </a>
+          </div>
 
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.whatsappIcon}
-                aria-label={`${t('whatsapp_label')} ${PHONE_DISPLAY}`}
-              >
-                <Image
-                  src="/images/waLogo.png"
-                  alt="WhatsApp"
-                  width={20}
-                  height={20}
-                  className={styles.waLogo}
-                />
-              </a>
-            </li>
-
-            <li>
-              <span className={styles.icon}>✉️</span>
-              <a href="mailto:a.bellone@nectar-winemerchant.com">
-                a.bellone@nectar-winemerchant.com
-              </a>
-            </li>
-          </ul>
-
-          <div className={styles.hours}>
-            <h3>{t('hours_title')}</h3>
-            <p>{t('hours_text')}</p>
+          <div className={styles.blockInline}>
+            <p className={styles.label}>{t('whatsapp_label')}</p>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.whatsappLink}
+              aria-label={`${t('whatsapp_label')} ${PHONE_DISPLAY}`}
+            >
+              <Image
+                src="/images/waLogo.png"
+                alt="WhatsApp"
+                width={22}
+                height={22}
+                className={styles.waLogo}
+              />
+              <span>{PHONE_DISPLAY}</span>
+            </a>
           </div>
         </div>
 
         {/* ----- FORMULAIRE ----- */}
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
           <div className={styles.field}>
             <label htmlFor="name">{t('form.fullname_label')}</label>
             <input
@@ -176,24 +174,12 @@ export default function Contact() {
           </button>
 
           {status === 'success' && (
-            <p
-              style={{
-                fontSize: '0.9rem',
-                color: 'green',
-                marginTop: '0.75rem',
-              }}
-            >
+            <p className={`${styles.status} ${styles.statusSuccess}`}>
               {t('form.success')}
             </p>
           )}
           {status === 'error' && (
-            <p
-              style={{
-                fontSize: '0.9rem',
-                color: 'crimson',
-                marginTop: '0.75rem',
-              }}
-            >
+            <p className={`${styles.status} ${styles.statusError}`}>
               {t('form.error')}
             </p>
           )}

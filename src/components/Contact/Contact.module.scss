@@ -4,112 +4,102 @@
 .section {
   @include section-padding;
   background-color: $color-white;
+  border-top: 1px solid rgba($color-black, 0.06);
 }
 
 .inner {
   @include container;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 4rem;
-  align-items: flex-start;
+  align-items: center;
+  min-height: 70vh;
+}
+
+/* --- TYPO INFO --- */
+
+.eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba($color-black, 0.45);
+  margin-bottom: 0.75rem;
 }
 
 .heading {
-  @include heading-underline;
   font-family: $font-title;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.1rem;
+  margin-bottom: 1.25rem;
+  color: $color-bordeaux-dark;
+}
+
+.lead {
+  color: $color-muted;
+  font-size: 0.98rem;
+  margin-bottom: 2.5rem;
 }
 
 .info {
-  p {
-    color: $color-muted;
-    margin-bottom: 1.5rem;
-    font-size: 0.98rem;
-  }
+  max-width: 520px;
 }
 
-.details {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
-  display: grid;
-  gap: 1rem;
+/* blocs d'info alignés, très sobres */
 
-  li {
-    display: flex;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-
-    a {
-      color: $color-bordeaux;
-      font-weight: 500;
-    }
-  }
+.block {
+  margin-bottom: 1.4rem;
 }
 
-/* Ligne téléphone + WhatsApp */
-.phoneLine {
-  align-items: center;
-  gap: 0.75rem;
+.blockInline {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.phoneNumber {
-  color: $color-bordeaux;
-  font-weight: 600;
+.label {
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba($color-black, 0.5);
+  margin-bottom: 0.25rem;
 }
 
-.whatsappIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 0.15rem;
+.value {
+  font-size: 0.98rem;
+  color: $color-black;
+  text-decoration: none;
 
   &:hover {
-    transform: translateY(-1px);
+    color: $color-bordeaux-dark;
   }
 }
 
-.icon {
+.whatsappLink {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-  font-size: 1.1rem;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: $color-bordeaux;
+
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
 .waLogo {
   display: block;
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
 }
 
-.hours {
-  h3 {
-    font-size: 0.95rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: $color-bordeaux-dark;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: $color-muted;
-  }
-}
+/* --- FORMULAIRE --- */
 
 .form {
-  background-color: #faf9f7;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+  background-color: $color-white;
+  padding: 2.5rem 2.25rem;
+  border-radius: 18px;
+  border: 3px solid rgba($color-bordeaux, 0.15);
   display: grid;
-  gap: 1.5rem;
+  gap: 1.4rem;
 }
 
 .field {
@@ -117,28 +107,35 @@
   gap: 0.4rem;
 
   label {
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba($color-black, 0.6);
   }
 
   input,
   textarea {
     border-radius: 999px;
-    border: 1px solid #e1dfdb;
-    padding: 0.75rem 1.1rem;
+    border: 1px solid rgba($color-black, 0.08);
+    padding: 0.8rem 1.1rem;
     font: inherit;
     outline: none;
-    background-color: $color-white;
-    transition: border-color 0.15s ease-out, box-shadow 0.15s ease-out;
+    background-color: #faf7f2;
+    transition:
+      border-color 0.15s ease-out,
+      box-shadow 0.15s ease-out,
+      background-color 0.15s ease-out;
 
     &:focus {
       border-color: $color-bordeaux;
-      box-shadow: 0 0 0 2px rgba($color-bordeaux, 0.18);
+      background-color: $color-white;
+      box-shadow: 0 0 0 1px rgba($color-bordeaux, 0.25);
     }
   }
 
   textarea {
     border-radius: 18px;
+    min-height: 140px;
     resize: vertical;
   }
 }
@@ -146,19 +143,23 @@
 .submit {
   border: none;
   border-radius: 999px;
-  padding: 0.9rem 1.5rem;
+  padding: 0.9rem 1.9rem;
   font: inherit;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   cursor: pointer;
   background: linear-gradient(to right, $color-bordeaux, $color-bordeaux-dark);
   color: $color-white;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+  justify-self: flex-start;
+  transition:
+    transform 0.12s ease-out,
+    box-shadow 0.12s ease-out,
+    opacity 0.12s ease-out;
 
   &:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba($color-bordeaux-dark, 0.35);
+    box-shadow: 0 8px 22px rgba($color-bordeaux-dark, 0.35);
   }
 
   &:disabled {
@@ -169,12 +170,30 @@
   }
 }
 
+/* messages de statut */
+
+.status {
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+.statusSuccess {
+  color: #1d8a4b;
+}
+
+.statusError {
+  color: #b02030;
+}
+
+/* --- RESPONSIVE --- */
+
 @include up-to(900px) {
   .inner {
     grid-template-columns: 1fr;
+    gap: 3rem;
   }
 
   .form {
-    order: 2;
+    padding: 2rem 1.6rem;
   }
 }

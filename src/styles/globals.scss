@@ -12,7 +12,7 @@
 @font-face {
   font-family: 'Cormorant Garamond';
   src: url('/fonts/CormorantGaramond-VariableFont_wght.ttf') format('truetype');
-  font-weight: 300 700; // plage de poids du variable font
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
@@ -37,13 +37,17 @@ html,
 body {
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  height: 100%; // body prend toute la hauteur du viewport
 }
 
+/* 👉 Le body NE SCROLLE PLUS : 1 seul scroll = .snap-container */
 body {
   font-family: $font-base;
   color: $color-text;
   background-color: $color-bg-light;
   line-height: 1.6;
+  overflow: hidden;
 }
 
 a {
@@ -56,6 +60,39 @@ img {
   display: block;
 }
 
+/* === LAYOUT DE BASE === */
+
 main {
   background-color: $color-bg-light;
+}
+
+/* === CONTENEUR FULLPAGE + SCROLL-SNAP === */
+/* C'est lui qu'on utilise dans HomePage :
+   <main className="snap-container"> ... </main>
+*/
+
+.snap-container {
+  height: 100vh;          // occupe tout l'écran
+  overflow-y: auto;       // C'EST LUI qui scrolle
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 80px; // compense le header fixe
+  background-color: $color-bg-light;
+
+  /* cacher la scrollbar tout en gardant le scroll */
+  scrollbar-width: none;         // Firefox
+  -ms-overflow-style: none;      // IE/Edge
+}
+
+.snap-container::-webkit-scrollbar {
+  display: none;                 // Chrome / Safari
+}
+
+/* chaque section = une page qui s'accroche */
+.snap-container > section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
+/* Footer : moins haut si tu veux */
+#footer {
+  min-height: 10vh; // par ex
 }

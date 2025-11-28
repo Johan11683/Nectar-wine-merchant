@@ -1,6 +1,6 @@
 'use client';
 
-import styles from './About.module.scss';
+import styles from './About2.module.scss';
 import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
 
@@ -12,15 +12,16 @@ export default function About() {
       
       <div className={styles.left}>
         <h2 id="about-title" className={styles.heading}>
-          {t('title')}
+          {t('title2')}
         </h2>
 
-        <p>{t('paragraphs.p1')}</p>
+        <p>{t('paragraphs.p2')}</p>
+
       </div>
 
       <div className={styles.right}>
         <Image
-          src="/images/palette1.jpeg"
+          src="/images/bottleLine.jpg"
           alt="Palette de caisses de vin"
           fill
           priority

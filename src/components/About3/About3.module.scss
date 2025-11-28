@@ -22,7 +22,6 @@
   margin: 0 auto;             // finalise le centrage
 }
 
-
 .heading {
   @include heading-underline;
   font-family: $font-title;

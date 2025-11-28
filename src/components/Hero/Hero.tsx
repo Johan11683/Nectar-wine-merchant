@@ -3,61 +3,67 @@
 import Image from 'next/image';
 import styles from './Hero.module.scss';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
   const { t } = useTranslation('hero');
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // dès qu'on a quitté un peu le hero
+      setHasScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // état initial
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section id="top" className={styles.hero}>
       {/* Image plein écran */}
       <div className={styles.imageWrapper}>
         <Image
-          src="/images/hero1.webp"
+          src="/images/vineyard.jpg"
           alt={t('image_alt')}
           fill
-          sizes="100vw"   // ← LA bonne valeur pour un hero fullscreen
+          sizes="100vw"
           priority
-          quality={70}    // valeur idéale pour un hero
+          quality={70}
           className={styles.image}
         />
       </div>
 
-      {/* Overlays luxe */}
-      <div className={styles.darkOverlay} />
-      <div className={styles.bordeauxOverlay} />
-      <div className={styles.vignette} />
-      <div className={styles.grain} />
+      {/* Overlay simple */}
+      <div className={styles.overlay} />
 
-      {/* Contenu */}
+      {/* Contenu centré */}
       <div className={styles.content}>
-        <div className={styles.heroLogoWrapper}>
-          <Image
-            src="/images/logo.png"
-            alt="Nectar Wine Merchant"
-            width={80}
-            height={80}
-            priority
-            className={styles.heroLogo}
-          />
-        </div>
+        <p className={styles.kicker}>
+          {t('kicker', {t : 'Négociant en vins d’exception' })}
+        </p>
 
         <h1 className={styles.title}>
-          {t('title_line1')} <br />
-          {t('title_line2')}
+          <span>{t('title_line1')}</span>
+          <span className={styles.titleLine}>{t('title_line2')}</span>
         </h1>
-
-        <p className={styles.subtitle}>
-          {t('subtitle')}
-        </p>
-
-        <span className={styles.divider} />
-
-        <p className={styles.tagline}>
-          {t('tagline1')} <br />
-          {t('tagline2')} <br />
-          {t('tagline3')}
-        </p>
       </div>
+
+      {/* Indicateur de scroll */}
+      <a
+        href="#about"
+        className={`${styles.scrollIndicator} ${
+          hasScrolled ? styles.scrollIndicatorHidden : ''
+        }`}
+        aria-label={t('scroll_label', { defaultValue: 'Scroll to discover' })}
+      >
+        <span className={styles.mouse}>
+          <span className={styles.wheel} />
+        </span>
+        <span className={styles.scrollText}>Scroll</span>
+      </a>
     </section>
   );
 }
