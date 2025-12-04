@@ -11,59 +11,60 @@ export default function Hero() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // dès qu'on a quitté un peu le hero
       setHasScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // état initial
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <section id="top" className={styles.hero}>
-      {/* Image plein écran */}
+      {/* IMAGE PLEIN ÉCRAN */}
       <div className={styles.imageWrapper}>
+        {/* Desktop */}
         <Image
           src="/images/HB1.png"
           alt={t('image_alt')}
           fill
-          sizes="100vw"
           priority
           quality={70}
-          className={styles.image}
+          sizes="100vw"
+          className={`${styles.image} ${styles.imageDesktop}`}
+        />
+
+        {/* Mobile */}
+        <Image
+          src="/images/HB1-2.png"
+          alt={t('image_alt')}
+          fill
+          priority
+          quality={70}
+          sizes="100vw"
+          className={`${styles.image} ${styles.imageMobile}`}
         />
       </div>
 
-      {/* Overlay simple */}
+      {/* OVERLAY */}
       <div className={styles.overlay} />
 
+      {/* LOGO CENTRÉ */}
       <div className={styles.content}>
-<div className={styles.logoWrapper}>
-  <Image
-    src="/images/logoWhite.png"
-    alt="Nom du domaine du client"
-    fill
-    priority
-    className={styles.logo}
-    sizes="(max-width: 768px) 70vw, 320px"
-  />
-</div>
+        <div className={styles.logoWrapper}>
+          <Image
+            src="/images/logoWhite.png"
+            alt="Nectar Wine Merchant"
+            fill
+            priority
+            className={styles.logo}
+            sizes="(max-width: 768px) 70vw, 320px"
+          />
+        </div>
+      </div>
 
-</div>
-
-      {/* Contenu centré
-      <div className={styles.content}>
-        <p className={styles.title}>
-          {t('kicker')}
-        </p>
-        <p className={styles.kicker}>
-          {t('kicker2')}
-        </p>
-      </div> */}
-
-      {/* Indicateur de scroll */}
+      {/* INDICATEUR DE SCROLL */}
       <a
         href="#about"
         className={`${styles.scrollIndicator} ${
