@@ -9,13 +9,15 @@
   top: 0;
   z-index: 20;
   color: $color-white;
-  padding-block: 0;
+  padding-block: 10px;
 
   /* ↓ Version transparente lorsqu'on est dans le hero */
   background: linear-gradient(
     to bottom,
-    rgba($color-white, 0.6) 0%,
-    rgba($color-white, 0.25) 40%,
+    rgba($color-white, 0.7) 0%,
+    rgba($color-white, 0.6) 10%,
+    rgba($color-white, 0.5) 20%,
+    rgba($color-white, 0.3) 40%,
     rgba($color-white, 0) 100%
   );
 
@@ -47,13 +49,19 @@
 
 .logoWrapper {
   position: relative;
-  width: 280px;
-  height: 96px;
+  width: 150px;
+  height: 60px;
 }
 
 .logo {
   object-fit: contain;
+  transition: transform 0.5s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
+
 
 /* ░░░ BURGER ░░░ */
 
@@ -79,9 +87,9 @@
   display: flex;
   align-items: center;
   gap: 2.5rem;
-  font-size: 0.83rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.1em;
 }
 
 .navLinks {
@@ -108,7 +116,7 @@
       width: 0;
       height: 2px;
       background-color: rgba($color-bordeaux, 0.9);
-      transition: width 0.35s ease-out;
+      transition: width 0.5s ease-out;
     }
 
     &:hover::after {

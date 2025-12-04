@@ -18,16 +18,17 @@ export default function About() {
         <p>{t('paragraphs.p3')}</p>
 
       </div>
+<div className={styles.right}>
+  <Image
+    src="/images/palettePetrus.jpeg"
+    alt="Palette de caisses de vin"
+    fill
+    priority
+    className={styles.image}
+  />
+  <div className={styles.overlay} aria-hidden="true" />
+</div>
 
-      <div className={styles.right}>
-        <Image
-          src="/images/palettePetrus.jpeg"
-          alt="Palette de caisses de vin"
-          fill
-          priority
-          className={styles.image}
-        />
-      </div>
 
     </section>
   );

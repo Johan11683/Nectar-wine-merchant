@@ -78,7 +78,7 @@ export default function Header() {
         <a href="#top" className={styles.brand} onClick={() => setOpen(false)}>
           <div className={styles.logoWrapper}>
             <Image
-              src="/images/Logo_Transparent.png"
+              src="/images/logo.png"
               alt="Nectar Wine Merchant Logo"
               fill
               sizes="220px"

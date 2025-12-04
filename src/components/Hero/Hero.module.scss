@@ -45,45 +45,72 @@
 }
 
 /* CONTENU CENTRÉ */
-
 .content {
   position: relative;
   z-index: 1;
+
   @include container;
-  min-height: calc(100vh - 80px); // hero plein écran sous le header
+
+  min-height: calc(100vh - 80px);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: start;      // centre horizontalement
+  justify-content: center;  // centre verticalement
   text-align: center;
 }
 
-.kicker {
-  font-family: 'Cormorant Garamond', serif;
-  text-transform: uppercase;
-  letter-spacing: 0.26em;
-  font-size: 1.4rem;
-  color: rgba($color-white, 0.9);
-  margin-bottom: 1.5rem;
+/* LOGO */
+.logoWrapper {
+  margin-top: 12rem;
+  position: relative;
+  width: 450px;  // plus large + responsive
+  aspect-ratio: 3 / 1;               // adapte si ton logo est plus carré
 }
 
-.title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: clamp(2.4rem, 3.6vw, 3.4rem);
-  line-height: 1.3;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-
-  span {
-    display: block;
-  }
+.logo {
+  object-fit: contain;
 }
 
-.titleLine {
-  // deuxième ligne (style “DES GRANDS VINS”)
-  margin-top: 0.4rem;
-}
+
+// /* CONTENU CENTRÉ */
+
+// .content {
+//   position: relative;
+//   z-index: 1;
+//   @include container;
+//   min-height: calc(100vh - 80px); // hero plein écran sous le header
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   text-align: center;
+// }
+
+// .kicker {
+//   font-family: 'Cormorant Garamond', serif;
+//   text-transform: uppercase;
+//   letter-spacing: 0.26em;
+//   font-size: 1.4rem;
+//   color: rgba($color-white, 0.9);
+//   margin-bottom: 1.5rem;
+// }
+
+// .title {
+//   font-family: 'Cormorant Garamond', serif;
+//   font-weight: 400;
+//   font-size: clamp(2.4rem, 3.6vw, 3.4rem);
+//   line-height: 1.3;
+//   text-transform: uppercase;
+//   letter-spacing: 0.18em;
+
+//   span {
+//     display: block;
+//   }
+// }
+
+// .titleLine {
+//   // deuxième ligne (style “DES GRANDS VINS”)
+//   margin-top: 0.4rem;
+// }
 
 /* SCROLL INDICATOR */
 

@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Image plein écran */}
       <div className={styles.imageWrapper}>
         <Image
-          src="/images/vineyard.jpg"
+          src="/images/HeroBanana.png"
           alt={t('image_alt')}
           fill
           sizes="100vw"
@@ -39,7 +39,21 @@ export default function Hero() {
       {/* Overlay simple */}
       <div className={styles.overlay} />
 
-      {/* Contenu centré */}
+      <div className={styles.content}>
+<div className={styles.logoWrapper}>
+  <Image
+    src="/images/Logo11.png"
+    alt="Nom du domaine du client"
+    fill
+    priority
+    className={styles.logo}
+    sizes="(max-width: 768px) 70vw, 320px"
+  />
+</div>
+
+</div>
+
+      {/* Contenu centré
       <div className={styles.content}>
         <p className={styles.title}>
           {t('kicker')}
@@ -47,7 +61,7 @@ export default function Hero() {
         <p className={styles.kicker}>
           {t('kicker2')}
         </p>
-      </div>
+      </div> */}
 
       {/* Indicateur de scroll */}
       <a

@@ -19,14 +19,18 @@ export default function About() {
       </div>
 
       <div className={styles.right}>
-        <Image
-          src="/images/imageMasseto.jpeg"
-          alt="Palette de caisses de vin"
-          fill
-          priority
-          className={styles.image}
-        />
-      </div>
+  <div className={styles.imageWrapper}>
+    <Image
+      src="/images/imageMasseto.jpeg"
+      alt="Palette de caisses de vin"
+      fill
+      priority
+      className={styles.image}
+    />
+    <div className={styles.overlay}></div>
+  </div>
+</div>
+
 
     </section>
   );
