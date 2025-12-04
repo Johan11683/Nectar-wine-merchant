@@ -26,7 +26,7 @@ export default function Hero() {
       {/* Image plein écran */}
       <div className={styles.imageWrapper}>
         <Image
-          src="/images/HeroBanana.png"
+          src="/images/HB1.png"
           alt={t('image_alt')}
           fill
           sizes="100vw"
@@ -42,7 +42,7 @@ export default function Hero() {
       <div className={styles.content}>
 <div className={styles.logoWrapper}>
   <Image
-    src="/images/Logo11.png"
+    src="/images/logoWhite.png"
     alt="Nom du domaine du client"
     fill
     priority

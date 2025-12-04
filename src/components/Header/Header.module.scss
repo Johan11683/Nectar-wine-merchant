@@ -49,12 +49,13 @@
 
 .logoWrapper {
   position: relative;
-  width: 150px;
-  height: 60px;
+  width: 180px;
+  height: 70px;
 }
 
 .logo {
   object-fit: contain;
+  margin-left: -3rem;
   transition: transform 0.5s ease;
 
   &:hover {

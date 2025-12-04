@@ -67,7 +67,6 @@
   z-index: 1;
 }
 
-/* Overlay par-dessus */
 .overlay {
   position: absolute;
   inset: 0;
@@ -75,18 +74,18 @@
 
   background: radial-gradient(
       circle at 10% 0%,
-      rgba($color-bordeaux, 0.22),
-      transparent 55%
+      rgba($color-bordeaux, 0.12),   // -45% de densité bordeaux
+      transparent 65%                // transition plus douce
     ),
     linear-gradient(
       to bottom,
-      rgba($color-black, 0.65),
-      rgba($color-black, 0.35),
-      rgba($color-black, 0.85)
+      rgba($color-black, 0.35),      // AVANT : 0.65 — maintenant beaucoup plus léger
+      rgba($color-black, 0.18),      // AVANT : 0.35
+      rgba($color-black, 0.45)       // AVANT : 0.85 — tu veux garder un peu de base en bas
     );
 
   mix-blend-mode: normal;
-  pointer-events: none; // pour empêcher l’overlay de bloquer des interactions
+  pointer-events: none;
 }
 
 /* --- RESPONSIVE --- */
