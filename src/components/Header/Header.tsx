@@ -78,13 +78,14 @@ export default function Header() {
         <a href="#top" className={styles.brand} onClick={() => setOpen(false)}>
           <div className={styles.logoWrapper}>
             <Image
-              src="/images/logo.png"
+              src={scrolled ? "/images/Logo11.png" : "/images/logo.png"}
               alt="Nectar Wine Merchant Logo"
               fill
               sizes="220px"
               priority
               className={styles.logo}
             />
+
           </div>
         </a>
 
