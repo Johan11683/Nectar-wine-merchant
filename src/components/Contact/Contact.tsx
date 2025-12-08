@@ -5,9 +5,32 @@ import Image from 'next/image';
 import styles from './Contact.module.scss';
 import { useTranslation } from 'react-i18next';
 
-const PHONE_DISPLAY = '+33 6 81 61 42 57';
-const PHONE_TEL = '+33681614257';
-const WHATSAPP_URL = 'https://wa.me/33681614257';
+type ContactPerson = {
+  id: string;
+  name: string;
+  phoneDisplay: string;
+  phoneTel: string;
+  email: string;
+  isPrimary?: boolean;
+};
+
+const CONTACTS: ContactPerson[] = [
+  {
+    id: 'arnaud',
+    name: 'Arnaud Bellone',
+    phoneDisplay: '+33 6 81 61 42 57',
+    phoneTel: '+33681614257',
+    email: 'a.bellone@nectar-winemerchant.com',
+    isPrimary: true,
+  },
+  {
+    id: 'hugo',
+    name: 'Hugo Moronval',
+    phoneDisplay: '+33 6 34 04 08 44',
+    phoneTel: '+33634040844',
+    email: 'h.moronval@nectar-winemerchant.com',
+  },
+];
 
 export default function Contact() {
   const { t } = useTranslation('contact');
@@ -56,6 +79,7 @@ export default function Contact() {
   return (
     <section id="contact" className={styles.section} aria-labelledby="contact-title">
       <div className={styles.inner}>
+
         {/* ----- COLONNE INFO ----- */}
         <div className={styles.info}>
           <p className={styles.eyebrow}>{t('title')}</p>
@@ -64,48 +88,58 @@ export default function Contact() {
             {t('who')}
           </h2>
 
-          <p className={styles.lead}>
-            {t('hours_text')}
-          </p>
+          <p className={styles.lead}>{t('hours_text')}</p>
 
           <div className={styles.block}>
             <p className={styles.label}>{t('address')}</p>
           </div>
 
+          {/* ----- TELEPHONES ----- */}
           <div className={styles.block}>
             <p className={styles.label}>{t('phone_label')}</p>
-            <a href={`tel:${PHONE_TEL}`} className={styles.value}>
-              {PHONE_DISPLAY}
-            </a>
+
+            {CONTACTS.map((person) => {
+              const waUrl = `https://wa.me/${person.phoneTel.replace('+', '')}`;
+
+              return (
+                <p key={person.id} className={`${styles.value} ${styles.item}`}>
+                  <span className={styles.contactName}>{person.name} :</span>{' '}
+                  <a href={`tel:${person.phoneTel}`}>{person.phoneDisplay}</a>
+
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.inlineWa}
+                    aria-label={`WhatsApp ${person.name}`}
+                  >
+                    <Image
+                      src="/images/waLogo.png"
+                      alt="WhatsApp"
+                      width={32}
+                      height={32}
+                      className={styles.waInlineIcon}
+                    />
+                  </a>
+                </p>
+              );
+            })}
           </div>
 
+          {/* ----- EMAILS ----- */}
           <div className={styles.block}>
             <p className={styles.label}>{t('email_label')}</p>
-            <a
-              href="mailto:a.bellone@nectar-winemerchant.com"
-              className={styles.value}
-            >
-              a.bellone@nectar-winemerchant.com
-            </a>
-          </div>
 
-          <div className={styles.blockInline}>
-            <p className={styles.label}>{t('whatsapp_label')}</p>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.whatsappLink}
-              aria-label={`${t('whatsapp_label')} ${PHONE_DISPLAY}`}
-            >
-              <Image
-                src="/images/waLogo.png"
-                alt="WhatsApp"
-                width={22}
-                height={22}
-                className={styles.waLogo}
-              />
-            </a>
+            {CONTACTS.map((person) => (
+              <div key={person.id} className={styles.item}>
+                <a
+                  href={`mailto:${person.email}`}
+                  className={styles.value}
+                >
+                  {person.email}
+                </a>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -177,6 +211,7 @@ export default function Contact() {
               {t('form.success')}
             </p>
           )}
+
           {status === 'error' && (
             <p className={`${styles.status} ${styles.statusError}`}>
               {t('form.error')}

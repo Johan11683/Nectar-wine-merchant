@@ -43,7 +43,7 @@
   max-width: 520px;
 }
 
-/* blocs d'info alignés, très sobres */
+/* blocs d'info */
 
 .block {
   margin-bottom: 1.4rem;
@@ -68,30 +68,47 @@
   font-size: 0.98rem;
   color: $color-black;
   text-decoration: none;
+  margin: 0;
+  display: inline;
 
   &:hover {
     color: $color-bordeaux-dark;
   }
 }
 
-.whatsappLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  text-decoration: none;
-  color: $color-bordeaux;
+/* --- spacing générique pour téléphones + emails --- */
 
-  &:hover {
-    opacity: 0.85;
+.item {
+  display: block;
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
-.waLogo {
-  display: block;
-  height: 45px;
-  width: 45px;
+/* WhatsApp inline à côté du numéro principal */
+
+.inlineWa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  opacity: 0.85;
+  transition: opacity 0.2s ease-out;
+
+  &:hover {
+    opacity: 1;
+  }
 }
+
+.waInlineIcon {
+  display: block;
+  width: 35px;
+  height: 35px;
+}
+
 
 /* --- FORMULAIRE --- */
 
@@ -171,8 +188,6 @@
     transform: none;
   }
 }
-
-/* messages de statut */
 
 .status {
   font-size: 0.85rem;
