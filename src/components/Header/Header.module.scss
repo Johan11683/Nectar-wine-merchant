@@ -64,6 +64,10 @@
     transform: scale(1.1);
   }
 }
+/* Quand le header est scrolled, on remet le margin-left à 0 */
+.scrolled .logo {
+  margin-left: 0rem;
+}
 
 
 
