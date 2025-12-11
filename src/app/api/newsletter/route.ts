@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     }
   });
 
-  const to = "monard.johan@yahoo.fr";
+  const to = process.env.CONTACT_TO
   const from = process.env.MAIL_FROM || `"Nectar Newsletter" <${process.env.SMTP_USER}>`;
 
   const subject = "Nouvelle entrée dans la newsletter !";

@@ -23,7 +23,7 @@ export default function LegalPage() {
           16 Place des Quinconces<br />
           33000 Bordeaux – France<br />
           SIRET : 94165336200017<br />
-          Email : contact@nectarwine.com<br />
+          Email : admin@nectar-winemerchant.com<br />
           Téléphone : +33 6 81 61 42 57
         </p>
       </section>
@@ -85,8 +85,8 @@ export default function LegalPage() {
           <br /><br />
           Conformément au RGPD, vous pouvez demander l’accès, la modification ou
           la suppression de vos données en écrivant à :{" "}
-          <a href="a.bellone@nectar-winemerchant.com">
-            a.bellone@nectar-winemerchant.com
+          <a href="admin@nectar-winemerchant.com">
+            admin@nectar-winemerchant.com
           </a>.
         </p>
       </section>
