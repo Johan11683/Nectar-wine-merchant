@@ -1,7 +1,9 @@
 {
-  "title": "Subscribe to our newsletter !",
+  "title": "To receive our offers",
   "placeholderEmail": "Enter your email address",
   "button": "Subscribe",
+  "newsletter_link": "Subscribe to receive our offers",
+  "newsletter_text": "Subscribe to receive our offers",
   "success": "Thank you ! Your subscription was successful.",
   "error": "Subscription failed. Please try again or contact us directly at a.bellone@nectar-winemerchant.com"
 }

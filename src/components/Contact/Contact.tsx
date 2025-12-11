@@ -20,7 +20,7 @@ const CONTACTS: ContactPerson[] = [
     name: 'Arnaud Bellone',
     phoneDisplay: '+33 6 81 61 42 57',
     phoneTel: '+33681614257',
-    email: 'a.bellone@nectar-winemerchant.com',
+    email: 'admin@nectar-winemerchant.com',
     isPrimary: true,
   },
   {
@@ -28,7 +28,7 @@ const CONTACTS: ContactPerson[] = [
     name: 'Hugo Moronval',
     phoneDisplay: '+33 6 34 04 08 44',
     phoneTel: '+33634040844',
-    email: 'h.moronval@nectar-winemerchant.com',
+    email: '',
   },
 ];
 
@@ -126,21 +126,42 @@ export default function Contact() {
             })}
           </div>
 
-          {/* ----- EMAILS ----- */}
-          <div className={styles.block}>
-            <p className={styles.label}>{t('email_label')}</p>
+          {/* ----- EMAILS + NEWSLETTER ----- */}
+{/* ----- EMAILS + NEWSLETTER ----- */}
+<div className={styles.block}>
+  <p className={styles.label}>{t('email_label')}</p>
 
-            {CONTACTS.map((person) => (
-              <div key={person.id} className={styles.item}>
-                <a
-                  href={`mailto:${person.email}`}
-                  className={styles.value}
-                >
-                  {person.email}
-                </a>
-              </div>
-            ))}
-          </div>
+  {CONTACTS.filter((person) => person.email.trim()).map((person) => (
+    <div key={person.id} className={styles.item}>
+      <a
+        href={`mailto:${person.email}`}
+        className={styles.value}
+      >
+        {person.email}
+      </a>
+    </div>
+  ))}
+
+  {/* Sous-titre newsletter */}
+  <p className={styles.label}>
+    {t('newsletter_text')}
+  </p>
+
+  {/* Lien luxe qui ouvre la modale */}
+  <button
+    type="button"
+    className={styles.newsletterLuxury}
+    onClick={() => {
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('open-newsletter'));
+      }
+    }}
+  >
+    <span className={styles.text}>{t('newsletter_link')}</span>
+    <span className={styles.decor}>→</span>
+  </button>
+</div>
+
         </div>
 
         {/* ----- FORMULAIRE ----- */}
