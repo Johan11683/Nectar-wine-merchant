@@ -19,23 +19,22 @@ export default function Header() {
     i18n.changeLanguage(lang);
   }
 
-  // gestion scroll → header transparent tant que le Hero est visible, noir sinon
+  // gestion scroll (inchangé)
   useEffect(() => {
     if (typeof document === 'undefined') return;
 
     const container = document.querySelector('.snap-container') as HTMLElement | null;
-    const hero = document.getElementById('top'); // ton <section id="top" ...> du Hero
+    const hero = document.getElementById('top');
 
     if (!hero) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // si le hero N'est plus visible => header noir
         setScrolled(!entry.isIntersecting);
       },
       {
-        root: container ?? null, // si on a un conteneur scroll-snap, on l'utilise
-        threshold: 0.6,          // ~60% visible -> encore considéré "dans le hero"
+        root: container ?? null,
+        threshold: 0.6,
       }
     );
 
@@ -46,9 +45,23 @@ export default function Header() {
     };
   }, []);
 
-  // Met à jour <html lang> + persiste la langue
+  // 1) Au premier montage : on lit la langue sauvegardée (nectar-lang)
   useEffect(() => {
-    const shortLang = (i18n.language || 'en').slice(0, 2);
+    if (typeof window === 'undefined') return;
+
+    const saved = window.localStorage.getItem('nectar-lang') as 'en' | 'fr' | null;
+    if (!saved) return;
+
+    const currentShort = (i18n.language || 'en').slice(0, 2) as 'en' | 'fr';
+    if (saved !== currentShort) {
+      i18n.changeLanguage(saved);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // ← on ne veut le faire qu'une seule fois au montage
+
+  // 2) Dès que la langue change : on met à jour <html lang> + localStorage
+  useEffect(() => {
+    const shortLang = (i18n.language || 'en').slice(0, 2) as 'en' | 'fr';
 
     if (typeof document !== 'undefined') {
       document.documentElement.lang = shortLang;
@@ -57,19 +70,6 @@ export default function Header() {
       window.localStorage.setItem('nectar-lang', shortLang);
     }
   }, [i18n.language]);
-
-  // Récupère la langue au montage (si déjà choisie)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    const saved = window.localStorage.getItem('nectar-lang') as 'en' | 'fr' | null;
-    if (!saved) return;
-
-    const currentShort = (i18n.language || 'en').slice(0, 2);
-    if (saved !== currentShort) {
-      i18n.changeLanguage(saved);
-    }
-  }, [i18n]);
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -85,11 +85,10 @@ export default function Header() {
               priority
               className={styles.logo}
             />
-
           </div>
         </a>
 
-        {/* BURGER (mobile) */}
+        {/* BURGER */}
         <button
           className={styles.burger}
           onClick={() => setOpen((prev) => !prev)}
@@ -101,7 +100,7 @@ export default function Header() {
           <span />
         </button>
 
-        {/* NAVIGATION */}
+        {/* NAV */}
         <nav
           className={`${styles.nav} ${open ? styles.open : ''}`}
           aria-label={t('aria.main_nav')}
@@ -117,22 +116,21 @@ export default function Header() {
             >
               {t('links.contact')}
             </a>
-          <a
-            className={styles.instaLink}
-            href="https://www.instagram.com/nectar_wine_merchant/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram — Nectar Wine Merchant"
-          >
-            <Image
-              src="/images/instalogo.webp"
-              alt="Instagram logo"
-              width={22}
-              height={22}
-              className={styles.instaIcon}
-            />
-          </a>
-
+            <a
+              className={styles.instaLink}
+              href="https://www.instagram.com/nectar_wine_merchant/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram — Nectar Wine Merchant"
+            >
+              <Image
+                src="/images/instalogo.webp"
+                alt="Instagram logo"
+                width={22}
+                height={22}
+                className={styles.instaIcon}
+              />
+            </a>
           </div>
 
           {/* LANG SWITCH */}

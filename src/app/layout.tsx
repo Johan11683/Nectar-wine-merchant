@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import '../styles/globals.scss';
 import I18nProvider from './I18nProvider';
+import NewsletterGate from '../components/NewsletterModal/NewsletterGate';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nectar-wine-merchant.vercel.app'), // ← OBLIGATOIRE
@@ -39,7 +40,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <I18nProvider>{children}</I18nProvider>
+        <I18nProvider>
+          {children}
+          <NewsletterGate />
+          </I18nProvider>
       </body>
     </html>
   );

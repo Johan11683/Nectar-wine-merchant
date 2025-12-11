@@ -1,0 +1,135 @@
+@use "../../styles/variables" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 16, 15, 0.8); // $color-black un peu plus foncé
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.modal {
+  position: relative;
+  background: #f7f5f2; // $color-bg-light
+  color: #5c0c14; // $color-bordeaux
+  padding: 2.4rem 2.8rem 2.2rem;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 520px; // plus large → titre sur une ligne
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+  text-align: center;
+}
+
+/* Croix de fermeture */
+.close {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  border: none;
+  background: transparent;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #5c0c14;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.title {
+  margin: 0 0 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Formulaire compact & luxe */
+.form {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+  margin-bottom: 1.2rem;
+
+  input {
+    flex: 1;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    font-size: 0.95rem;
+    outline: none;
+
+    &:focus {
+      border-color: rgba(92, 12, 20, 0.8); // bordeaux
+      box-shadow: 0 0 0 1px rgba(92, 12, 20, 0.15);
+    }
+  }
+
+  button {
+    padding: 0.7rem 1.4rem;
+    border-radius: 8px;
+    border: none;
+    background: #5c0c14; // bordeaux
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      transform 0.1s ease-out,
+      box-shadow 0.1s ease-out,
+      background 0.2s ease;
+
+    &:hover {
+      background: #460910;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+  }
+}
+
+/* Messages */
+.ok {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  color: #1c7c2a;
+}
+
+.err {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  color: #b00020;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .modal {
+    padding: 1.8rem 1.4rem 1.6rem;
+    max-width: 92vw;
+  }
+
+  .form {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .close {
+    top: 1rem;
+    right: 1rem;
+  }
+}

@@ -18,7 +18,7 @@
   border-bottom: 1px solid rgba($color-white, 0.08);
 }
 
-/* Bloc gauche : logo + baseline */
+/* Bloc gauche : tagline + Instagram */
 .brandBlock {
   max-width: 360px;
 
@@ -104,6 +104,22 @@
         width: 100%;
       }
     }
+  }
+}
+
+/* Lien newsletter : un peu plus discret visuellement */
+.newsletterLink {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin-top: 0.4rem;
+
+  &::after {
+    // même animation que les autres liens, mais un peu plus soft
+    background-color: rgba($color-accent, 0.8);
+  }
+
+  &:hover {
+    opacity: 1;
   }
 }
 

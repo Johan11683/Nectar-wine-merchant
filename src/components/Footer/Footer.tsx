@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        
+
         {/* Bloc logo + baseline */}
         <div className={styles.brandBlock}>
           <p className={styles.tagline}>
@@ -38,7 +38,7 @@ export default function Footer() {
 
         {/* Colonnes de liens */}
         <div className={styles.cols}>
-          
+
           {/* Navigation */}
           <div>
             <h3 className={styles.colTitle}>{t('cols.navigation_title')}</h3>
@@ -48,6 +48,18 @@ export default function Footer() {
             <a href="#gallery">{t('cols.nav_links.gallery')}</a>
             <br />
             <a href="#contact">{t('cols.nav_links.contact')}</a>
+            <br />
+
+            <a
+              href="#"
+              className={styles.newsletterLink}
+              onClick={(e) => {
+                e.preventDefault();
+                window.dispatchEvent(new CustomEvent('open-newsletter'));
+              }}
+            >
+              {t('cols.newsletter_link')}
+            </a>
           </div>
 
           {/* Contact */}
