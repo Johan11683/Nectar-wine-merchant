@@ -20,7 +20,7 @@ export default function About() {
       </div>
 <div className={styles.right}>
   <Image
-    src="/images/palettePetrus.jpeg"
+    src="/images/chefs.webp"
     alt="Palette de caisses de vin"
     fill
     priority
