@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import I18nProvider from './I18nProvider';
 import NewsletterGate from '../components/NewsletterModal/NewsletterGate';
+import '../styles/globals.scss';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nectar-winemerchant.com'),
