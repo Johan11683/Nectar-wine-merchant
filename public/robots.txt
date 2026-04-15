@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nectar-wine-merchant.com/sitemap.xml
+Sitemap: https://nectar-winemerchant.com/sitemap.xml
