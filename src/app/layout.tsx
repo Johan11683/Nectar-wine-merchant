@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import '../styles/globals.scss';
-import I18nProvider from '../src/app/I18nProvider';
-import NewsletterGate from '../src/components/NewsletterModal/NewsletterGate';
+import I18nProvider from './I18nProvider';
+import NewsletterGate from '../components/NewsletterModal/NewsletterGate';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nectar-winemerchant.com'),
@@ -45,7 +44,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <I18nProvider>
           {children}
           <NewsletterGate />
-          </I18nProvider>
+        </I18nProvider>
       </body>
     </html>
   );
